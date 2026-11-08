@@ -3,7 +3,7 @@
 **BITS Pilani WILP | M.Tech AI/ML | Machine Learning Assignment 2**
 
 **GitHub:** https://github.com/varunnandikollaGHL/digit-ml-studio  
-**Live Streamlit:** PENDING — replace with verified Streamlit Community Cloud URL.
+**Live Streamlit (student-provided):** https://digit-ml-studio-nq8mwmcmutzqbb49dxompe.streamlit.app/
 
 ## a. Problem statement
 
@@ -22,7 +22,7 @@ Classify 8×8 images of handwritten digits (0 through 9) from their 64 grayscale
 
 https://github.com/varunnandikollaGHL/digit-ml-studio
 
-**Streamlit app:** [INSERT REAL DEPLOYED URL AFTER DEPLOYMENT]
+**Streamlit app (student-provided deployment):** https://digit-ml-studio-nq8mwmcmutzqbb49dxompe.streamlit.app/
 
 ## d. Models and six-metric comparison
 
@@ -104,7 +104,7 @@ Check the produced `model/` files and `test_data.csv`. Capture **one genuine BIT
 2. Create an app from repository `varunnandikollaGHL/digit-ml-studio`, branch `main`, entrypoint `app.py`.
 3. Select Python 3.12 in advanced settings if offered.
 4. Deploy, open the live URL and upload `test_data.csv`; switch between the five models.
-5. Replace the Streamlit placeholder in this README and the report **only after verifying the URL**.
+5. Verify the supplied live Streamlit URL opens, upload `test_data.csv` and switch between all five models. If the deployment does not work, fix it before submission.
 6. Provide GitHub URL, Streamlit URL, authentic BITS screenshot, and this README in **one PDF**, in the requested order.
 
 ## i. Academic integrity
