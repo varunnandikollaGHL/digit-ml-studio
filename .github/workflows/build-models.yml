@@ -1,0 +1,45 @@
+name: Generate trained classifiers and test data
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'train_models.py'
+      - 'metrics_utils.py'
+      - 'requirements.txt'
+      - '.github/workflows/build-models.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Train and export artifacts
+        run: python train_models.py
+      - name: Validate all required artifacts
+        run: |
+          test -s test_data.csv
+          test -s full_dataset.csv
+          test -s metrics.csv
+          test -s metadata.json
+          for stem in logistic_regression decision_tree knn gaussian_naive_bayes support_vector_machine; do
+            test -s "model/${stem}.joblib"
+          done
+      - name: Commit generated models and CSVs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add test_data.csv full_dataset.csv metrics.csv metadata.json model assets
+          if ! git diff --cached --quiet; then
+            git commit -m "Add trained model files and held-out test dataset"
+            git push
+          fi
